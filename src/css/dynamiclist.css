@@ -1,0 +1,20 @@
+.dynamiclist {
+    margin-bottom: 12px;
+}
+
+.dynamiclist-item {
+    margin-top: 12px;
+}
+
+.dynamiclist-item-content {
+    width: auto;
+    padding-right: 25px;
+}
+
+.dynamiclist-template {
+    display: none;
+}
+
+.dynamiclist-addbutton {
+    margin: 12px;
+}
