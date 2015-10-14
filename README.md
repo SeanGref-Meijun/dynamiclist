@@ -28,6 +28,52 @@ $(document).ready(function () {
     $("#some-id").dynamiclist();
 });
 ```
+For every list item, each `input` will have `-X` appended to the `name` attribute, where `X` is the index of the item, starting at 0. Each label will have `-X` appended to the `for` attribute in order to match the `input`.
+
+There will also be a hidden element after the Add Item button that counts how many list items there are. This is useful when using dyanmiclist in a form. The name of the field comes from the id of the parent container (the one with the `dynamiclist` class). Using the above example, the counter will have the name `some-id-count`.
+
+We can build an array of the returned values easily using both of these.
+
+If we use the following form...
+
+```html
+<form action="GET">
+    <div class="dynamiclist" id="people">
+        <div class="dynamiclist-template">
+            <label for="name">Name: </label>
+            <input type="text" name="name" />
+            <br>
+            <lavel for="age">Age: </label>
+            <input type="number" name="age" />
+        </div>
+    </div>
+</form>
+```
+
+...then using PHP we can get the entire list with the following: 
+
+```PHP
+$listItems = array()
+$listCount = $_GET['people-count'];
+
+for($i = 0; $i < $listCount; $i++) {
+    $name = $_GET['name-' . $i];
+    $age = $_GET ['age-' . $i];
+    $listItems[] = array($name, $age);
+}
+```
+
+To populate the dynamic list with this data, we can do the following:
+
+```javascript
+$(document).ready(function () {
+    $("#people").dynamiclist({
+        'data': <?php echo json_encode($listItems); ?>
+    });
+});
+```
+
+Note that even if there is only one input field, each list item must be wrapped in an array.
 
 ## Options
 
