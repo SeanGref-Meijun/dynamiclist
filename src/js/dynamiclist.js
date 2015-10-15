@@ -58,7 +58,9 @@ $.DynamicList = function(ctl, options) {
         var c = 0;
         clone.find("input").each(function () {
             $(this).data('orig-name', $(this).attr('name'));
+            $(this).data('orig-id', $(this).attr('id'));
             $(this).attr('name', $(this).attr('name') + '-' + count);
+            $(this).attr('id', $(this).attr('id') + '-' + count);
             if(data[c] !== undefined) {
                 $(this).val(data[c]);
             }
@@ -81,6 +83,7 @@ $.DynamicList = function(ctl, options) {
                     root.find(".dynamiclist-item").each(function () {
                         $(this).find("input").each(function () {
                             $(this).attr('name', $(this).data('orig-name') + '-' + c);
+                            $(this).attr('id', $(this).data('orig-id') + '-' + c);
                         });
                         $(this).find("label").each(function () {
                             $(this).attr('for', $(this).data('orig-for') + '-' + c);

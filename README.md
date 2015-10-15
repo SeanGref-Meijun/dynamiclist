@@ -19,7 +19,7 @@ Create an element (probably a div) with the class `dynamiclist` and an id:
 </div>
 ```
 
-__The element MUST have a an id!__
+__The element MUST have an id!__
 
 In javascript, instantiate dynamiclist on the element:
 
